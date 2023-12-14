@@ -1,0 +1,14 @@
+<h3 class="text-7xl text-purple-950"> ass 4</h3>
+<p>gamecontrol works!</p>
+
+<app-gameevent (incrementEvent)="pushNumber($event)" [startGameChild]="startGame"></app-gameevent>
+
+    <div *ngFor="let num of numbers">
+
+        @if(num%2==0){
+            <app-event [evenNumer]="num"></app-event>}
+            @else{
+            <app-odd [oddNumber]="num"></app-odd>
+            }
+    </div>
+

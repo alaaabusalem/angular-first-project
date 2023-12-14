@@ -1,0 +1,33 @@
+<form (ngSubmit)="OnSubmit()" [formGroup]="myForm">
+    <div class="form-group">
+        <label for="pname">Project Name</label>
+        <input type="email" class="form-control" id="pname" aria-describedby="emailHelp"
+        formControlName="projectname"
+        >
+        <span class="text-danger" *ngIf=" ! myForm.get('projectname').valid && myForm.get('projectname').touched"> 
+            <span *ngIf="myForm.get('projectname').errors['required']"> this field is required</span>
+            <span *ngIf="myForm.get('projectname').errors['nameIsForbidden']"> test name is not allowed</span>
+        </span>
+      </div>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
+      formControlName="email"
+      >
+      <span class="text-danger" *ngIf=" ! myForm.get('email').valid && myForm.get('email').touched"> 
+        <span *ngIf="!myForm.get('email').required">  this field is required</span>
+
+        <span *ngIf="!myForm.get('email').email"> please Enter a valid email</span>
+      </span>
+
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Project status</label>
+
+        <select class="form-select" aria-label="Default select example" formControlName="projectstatus">
+            <option *ngFor="let item of status" [value]="item">{{item}}</option>
+          </select>     
+         </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+  </form>
